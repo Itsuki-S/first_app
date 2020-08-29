@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the first app for Ruby on Rails
 
-Things you may want to cover:
+This app was made with
 
-* Ruby version
+# Requirement and gems
+ruby 2.6.3
 
-* System dependencies
+# Installation
 
-* Configuration
+# Usage
 
-* Database creation
+# Note
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Author
