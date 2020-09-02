@@ -15,13 +15,13 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "full_title" do
     context "page_title が空である場合" do
       it "base_titleだけを表示すること" do
-        expect(helper.full_title).to eq('Divers')
+        expect(helper.full_title).to eq("Diver's Log")
       end
     end
 
     context "page_title が空でない場合" do
       it "page_title | base_title と表示すること" do
-        expect(helper.full_title('foo')).to eq('foo | Divers')
+        expect(helper.full_title('foo')).to eq("foo | Diver's Log")
       end
     end
   end
