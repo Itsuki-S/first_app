@@ -1,7 +1,40 @@
 <% provide(:title, "Home") %>
-<h1>Sample App</h1>
-<p>
-  This is the home page for the
-  <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+
+<div class="jumbotron jumbotron-fluid jumbotron-extended">
+  <div class="container">
+    <h1>Let's log and share!</h1>
+    <p>スキューバダイビングのログを記録して他の人と共有しませんか？</p>
+    <p>Diver's Logは、ダイビングログの記録とSNSを掛け合わせたwebアプリケーションです</p>
+    <p>メールアドレスを登録してこのアプリを使ってみましょう!</p>
+    <%= link_to "Sign Up!", signup_path, class: "btn btn-info btn-lg" %>
+    <p>ログインはこちらから</p>
+    <%= link_to "Sign In!", login_path, class: "btn btn-info btn-lg" %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="container discription-container top-page">
+    <div class="row">
+      <div class="col-lg-6">
+        <i class="fas fa-atlas my-icon"></i>
+        <h2>ダイビングログを記録</h2>
+        <p>ダイビングの後に記録するログをオンライン上に保存することができます。PC・スマホ・タブレットからアクセスできるので、もう紙媒体のログを持ち歩く必要はありません</p>
+      </div>
+      <div class="col-lg-6">
+        <i class="fas fa-share-square my-icon"></i>
+        <h2>ログをフォロワーにシェア</h2>
+        <p>保存したログをフォロワーと共有しましょう。フォロワーはあなたが投稿したログをタイムラインで閲覧することができます。もちろん、ログを共有するかはあなたが自由に決められます。</p>
+      </div>
+      <div class="col-lg-6">
+        <i class="fas fa-camera my-icon"></i>
+        <h2>画像投稿</h2>
+        <p>紙媒体のログとは異なり、ダイビングで撮影した写真をログと一緒に記録することもできます。あなたのログはより鮮明で見返すのが面白いものになるでしょう。</p>
+      </div>
+      <div class="col-lg-6">
+        <i class="fas fa-map-marked-alt my-icon"></i>
+        <h2>ロケーション</h2>
+        <p>ダイビングを行ったロケーションをGoogle map機能を使って視覚的に記録しましょう。こうすることで潜った場所を直感的に把握できるようになります。</p>
+      </div>
+    </div>
+  </div>
+</div>

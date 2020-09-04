@@ -1,16 +1,30 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-    <a class="navbar-brand" href="#">
-      <%= link_to image_tag('diving_logo.png', width: 50), root_path, class:"logo-img" %>
-      <%= link_to "Diver's Log", root_path, class: "logo-text" %>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-      <ul class="navbar-nav">
-        <li class="nav-item active"><%= link_to "Home", '/', class: "nav-link"%></li>
-        <li class="nav-item active"><%= link_to "My logs", '#', class: "nav-link"%></li>
-        <li class="nav-item active"><%= link_to "Users", '#', class: "nav-link"%></li>
+  <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <%= link_to image_tag('diving_logo.png', width: 40), root_path, class: "logo-img" %>
+        <%= link_to "Diver's Log", root_path, class: "logo-text mr-auto" %>
+      </a>
+      <ul class="navbar-nav ml-auto">
+        <%= link_to root_path, class: "my-auto" do %>
+          <i class="fas fa-home fa-lg icon"></i>
+        <% end %>
+        <li class="nav-item active">
+          <%= link_to "Home", root_path, class: "nav-link"%>
+        </li>
+        <%= link_to "#", class: "my-auto" do %>
+          <i class="far fa-address-book fa-lg icon"></i>
+        <% end %>
+        <li class="nav-item active">
+          <%= link_to "My logs", '#', class: "nav-link"%>
+        </li>
+        <%= link_to "#", class: "my-auto" do %>
+          <i class="fas fa-users fa-lg my-auto icon"></i>
+        <% end %>
+        <li class="nav-item active">
+          <%= link_to "Users", '#', class: "nav-link"%>
+        </li>
+        <i class="far fa-address-card fa-lg my-auto icon"></i>
         <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Account
@@ -20,5 +34,6 @@
           </div>
         </li>
       </ul>
+    <div>
   </nav>
 </header>

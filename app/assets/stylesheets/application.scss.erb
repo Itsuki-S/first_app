@@ -1,0 +1,135 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+*/
+
+@import "bootstrap";
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+
+/* body */
+body {
+  background-color: rgb(224, 224, 224);
+}
+
+/* header */
+
+header {
+  .logo-img { 
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  .logo-text {
+    margin-left: 10px;
+    font-size: 2em;
+    color: white;
+    font-weight: bold;
+    &:hover {
+      color: white;
+      text-decoration: none;
+      opacity: 0.9;
+    }
+  }
+  ul {
+    margin-right: 10px;
+    .icon {
+      color: white;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+  li {
+    font-size: large;
+    margin-right: 20px;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+/* home */
+
+.jumbotron-extended {
+  background-image: url(<%= asset_path "diving_jumbotron.jpg" %>);
+  background-size: cover;
+  .container {
+    margin-top: 2rem;
+    h1, p {
+      text-shadow:1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+      margin-left: auto;
+      color: white;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    a {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.top-page h2, .top-page p {
+  color: #111;
+}
+
+.top-page {
+  margin: 3rem 0;
+  padding: 3rem 1rem;
+  .my-icon {
+    display: block;
+    height: 40%;
+    width: 40%;
+    margin: auto;
+    margin-bottom: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.8rem;
+  }
+  p {
+    font-size: 1.3rem;
+    line-height: 2.1rem;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  a {
+    color: white;
+    &:hover {
+      color: white;
+      opacity: 0.9;
+      text-decoration: none;
+    }
+  }  
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    margin: 0;
+    li {
+      font-size: 1.3em;
+      float: left;
+      margin-right: 15px;
+    }
+  }
+}
