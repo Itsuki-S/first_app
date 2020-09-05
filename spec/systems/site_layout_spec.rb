@@ -2,14 +2,22 @@ require 'rails_helper'
 
 RSpec.describe "SiteLayouts", type: :system do
   describe "home layout" do
-    it "contains root link" do
+
+    it "returns title with Home | Diver's Log" do
       visit root_path
-      expect(page).to have_link nil, href: root_path
+      expect(page).to have_title "Home | Diver's Log"
     end
 
-    it "contails login link" do
+    it "contains root link" do
       visit root_path
-      expect(page).to have_link 'Sign In!', href: login_path
+      expect(page).to have_link nil, href: root_path, count: 4
+    end
+  end
+
+  describe "about layout" do
+    it "returns title with About | Diver's Log" do
+      visit about_path
+      expect(page).to have_title "About | Diver's Log"
     end
   end
 end
