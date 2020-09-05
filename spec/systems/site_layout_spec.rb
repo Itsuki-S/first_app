@@ -12,6 +12,11 @@ RSpec.describe "SiteLayouts", type: :system do
       visit root_path
       expect(page).to have_link nil, href: root_path, count: 4
     end
+
+    it "contains login link" do
+      visit root_path
+      expect(page).to have_link 'Sign Up!', href: signup_path
+    end
   end
 
   describe "about layout" do
