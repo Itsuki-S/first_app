@@ -15,7 +15,7 @@ RSpec.describe "SiteLayouts", type: :system do
 
     it "contains login link" do
       visit root_path
-      expect(page).to have_link 'Sign Up!', href: signup_path
+      expect(page).to have_link 'Sign up!', href: signup_path
     end
   end
 
