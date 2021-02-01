@@ -18,7 +18,8 @@ gem 'bootsnap',   '1.4.5', require: false
 group :development, :test do
   gem 'sqlite3', '1.4.1'
   gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
+  gem 'rspec-rails', '4.0.1'
+  gem 'factory_bot_rails', '6.1.0'
 end
 
 group :development do

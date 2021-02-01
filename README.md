@@ -1,16 +1,26 @@
 # README
+ポートフォリオ１作目です。
+アプリ名：Diver's log
+このアプリケーションはスキューバダイビングのログブックとSNSの要素を組み合わせたものです。ダイビングをした後に残すログをオンライン化して、他人と共有することができます。
 
-This is the first app for Ruby on Rails
+Railsチュートリアルで学んだ知識をおさらいしつつ新しい機能をつけました。
 
-This app was made with
+# 主な機能
+・ユーザー登録・ログイン機能
+・管理ユーザー機能
+・ログ詳細表示機能
+・ログ投稿機能
+・ログ編集機能
+・Google map apiによる地図表示機能
+・画像ファイルのアップロード機能
+・ページネーション機能
+・（フォロー機能＆ユーザフィード機能）or（ログの公開/非公開指定機能）
+・いいね機能
 
-# Requirement and gems
+# 使用gem
 ruby 2.6.3
+rails 6.0.3
+rspec-rails 4.0.1
 
-# Installation
 
-# Usage
-
-# Note
-
-# Author
+渋谷 樹生
