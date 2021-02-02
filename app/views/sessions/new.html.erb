@@ -13,6 +13,11 @@
           <%= form.password_field :password, class: 'form-control', placeholder: "Password" %>
         </div>
 
+        <div class="form-group form-check">
+          <%= form.check_box :remember_me, class: 'form-check_input' %>
+          <%= form.label :remember_me, 'ログインを維持する', class: 'form-check-label'%>
+        </div>
+
         <div class="form-group">
           <%= form.submit "Login", class: "btn btn-primary btn-lg form-submit" %>
         </div>

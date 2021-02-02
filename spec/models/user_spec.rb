@@ -106,4 +106,8 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  it 'authenticated? returns flase for a user with nil digest' do
+    expect(user.authenticated?('')).to be_falsey
+  end
 end

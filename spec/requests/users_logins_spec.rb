@@ -48,5 +48,27 @@ RSpec.describe "UsersLogins", type: :request do
         expect(is_logged_in?).to be_falsy
       end
     end
+
+    it 'succeeds logout when user logs out on multiple tabs' do
+      delete logout_path
+      aggregate_failures do
+        expect(response).to redirect_to root_path
+        expect(is_logged_in?).to be_falsy
+      end
+    end
+  end
+
+  describe 'remenber me' do
+    it 'saves permanent cookies when remember_me checkbox is checked' do
+      log_in_as(user, remember_me: "1")
+      expect(cookies[:remember_token]).not_to eq nil
+    end
+
+    it "doesn't save permanent cookies when remember_me checkbox isn't checked" do
+      delete logout_path
+      log_in_as(user, remember_me: "0")
+      expect(cookies[:remember_token]).to eq nil
+    end
+
   end
 end

@@ -36,12 +36,12 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Account
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to "Profile", current_user, class: "dropdown-item" %>
-                <%= link_to "Setting", '#', class: "dropdown-item" %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item" %>
-              </div>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><%= link_to "Profile", current_user, class: "dropdown-item" %></li>
+                <li><%= link_to "Setting", '#', class: "dropdown-item" %></li>
+                <li class="dropdown-divider"></li>
+                <li><%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item" %></li>
+              </ul>
             </li>
           <% else %>
             <li class="nav-item active d-flex">
