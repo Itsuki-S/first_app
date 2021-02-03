@@ -9,7 +9,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in 'Password', with: 'foo'
     fill_in 'Password Confirmation', with: 'bar'
     click_on 'Create my account'
-    expect(current_path).to eq signup_path
+    expect(current_path).to eq users_path
     expect(page).to have_selector '#error_explanation'
   end
 
@@ -20,8 +20,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in 'Password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
     click_on 'Create my account'
-    # follow_redirect!
-    expect(current_path).to eq user_path(1)
+    expect(current_path).to eq root_path
     expect(page).not_to have_selector '#error_explanation'
   end
 end

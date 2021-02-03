@@ -8,12 +8,15 @@ gem 'bcrypt',     '3.1.15'
 gem 'bootstrap',  '4.5.2'
 gem 'jquery-rails'
 gem 'puma',       '4.3.4'
-# gem 'sass-rails', '5.1.0'
 gem 'sassc-rails'
+gem 'autoprefixer-rails', '9.8.6.5'
 gem 'webpacker',  '4.0.7'
 gem 'turbolinks', '5.2.0'
 gem 'jbuilder',   '2.9.1'
 gem 'bootsnap',   '1.4.5', require: false
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+gem 'faker', '2.15.1'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'

@@ -19,6 +19,15 @@
 
 /* mixins, variables, etc. */
 
+@function get_vw($size, $viewport: 375) {
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+@mixin fz_vw($font_size: 10) {
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size);
+}
 
 
 /* body */
@@ -29,7 +38,7 @@ body {
 /* header */
 
 header {
-  height: 64px;
+  height: 90px;
   .logo-img { 
     &:hover {
       opacity: 0.9;
@@ -62,7 +71,18 @@ header {
   }
 }
 
+/* pagination */
+
+.pagination {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* home */
+
+.vw {
+  @include fz_vw(8);
+}
 
 .jumbotron-extended {
   background-image: url(<%= asset_path "diving_jumbotron.jpg" %>);
@@ -170,24 +190,42 @@ aside {
   margin-right: 10px;
 }
 
-.gravatar_edit {
-  margin-top: 15px;
+/* users index */
+
+.index-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
-/* signup login */
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid gray;
+    a {
+      font-weight: bold;
+      color: #333;
+      font-size: 20pt;
+    }
+  }
+}
 
-.signup-container, .form-container {
+/* form */
+
+.form-container {
   width: 100%;
-  padding-top: 1rem !important;
+  padding-top: 2rem !important;
 }
 
-.signup-title, .form-title {
+.form-title {
   text-align: center;
   font-weight: bold;
   margin-bottom: 2rem;
 }
-
-/* form */
 
 .form-control {
   margin-bottom: 0;
@@ -195,6 +233,14 @@ aside {
 
 .form-submit {
   width: 100%;
+}
+
+.gravatar_edit {
+  margin-top: 40px;
+  h3 {
+    margin-top: 20px;
+    float: left;
+  }
 }
 
 #error_explanation {
