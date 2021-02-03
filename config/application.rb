@@ -22,5 +22,6 @@ module FirstApp
                        controller_specs: false,
                        routing_specs: false
     end
+    config.i18n.default_locale = :ja
   end
 end
