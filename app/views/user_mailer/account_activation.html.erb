@@ -1,0 +1,9 @@
+<h1>Diver's log</h1>
+
+<p><%= @user.name %>様、</p>
+
+<p>
+Diver's logにようこそ！ 下のリンクを押せばアカウントの認証が行われます。
+</p>
+
+<%= link_to "認証を行う", edit_account_activation_url(@user.activation_token, email: @user.email) %>

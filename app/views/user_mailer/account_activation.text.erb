@@ -1,0 +1,7 @@
+<%= @user.name %>様、
+
+Diver's logにようこそ！ 下のリンクを押せばアカウントの認証が行われます。
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+このメールには返信をしないでください。

@@ -10,7 +10,9 @@ User.create!(name: "仙崎 大輔",
              email: "diver@example.com",
              password: "diving",
              password_confirmation: "diving",
-             admin: true)
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
 
 #その他のサンプルユーザの作成
 99.times do |n|
@@ -20,5 +22,7 @@ User.create!(name: "仙崎 大輔",
   User.create!(name:  name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
 end

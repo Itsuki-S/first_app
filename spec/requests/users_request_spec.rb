@@ -11,7 +11,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "GET /signups" do
+  describe "Post /signups" do
     it "is invalid signup information" do
       get signup_path
       expect {
@@ -38,6 +38,11 @@ RSpec.describe "Users", type: :request do
           }
         }
       }.to change(User, :count).by(1)
+      aggregate_failures do
+        expect(ActionMailer::Base.deliveries.size).to eq(1)
+        expect(response).to redirect_to root_url
+        expect(is_logged_in?).to be_falsey
+      end
     end
   end
 

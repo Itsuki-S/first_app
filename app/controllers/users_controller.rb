@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to Diver's log!"
-      log_in(@user)
+      @user.send_activation_email
+      flash[:info] = "認証用メールが送信されました"
       redirect_to root_path
     else
       render 'new'
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
   end
 
   def edit
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Profile update"
+      flash[:success] = "プロフィールが編集されました"
       redirect_to @user
     else
       render 'edit'
@@ -37,12 +38,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page])
+    @users = User.where(activated: true).all.page(params[:page])
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "ユーザーが削除されました"
     redirect_to users_url
   end
 
@@ -56,7 +57,7 @@ class UsersController < ApplicationController
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
+        flash[:danger] = "ログインして下さい"
         redirect_to login_path
       end
     end

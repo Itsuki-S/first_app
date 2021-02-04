@@ -22,8 +22,4 @@ ruby 2.6.3
 rails 6.0.3
 rspec-rails 4.0.1
 
-# 利用上の注意
-テストを行う際は事前に
-rails db:migate と
-rails db:seed を行って下さい
 渋谷 樹生
