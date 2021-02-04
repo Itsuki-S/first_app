@@ -114,8 +114,6 @@ RSpec.describe "PasswordResets", type: :request do
         expect(flash[:success]).to be_truthy
         expect(response).to redirect_to user
       end
-      get root_path
-      expect(user.reload.password).to eq "foobaz"
     end
 
     it "fails when expired" do
