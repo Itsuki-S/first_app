@@ -261,21 +261,21 @@ DEPENDENCIES
   bcrypt (= 3.1.15)
   bootsnap (= 1.4.5)
   bootstrap (= 4.5.2)
-  bootstrap4-kaminari-views
+  bootstrap4-kaminari-views (= 1.0.1)
   byebug (= 11.0.1)
   capybara (= 3.28.0)
   factory_bot_rails (= 6.1.0)
   faker (= 2.15.1)
   jbuilder (= 2.9.1)
-  jquery-rails
-  kaminari
+  jquery-rails (= 4.4.0)
+  kaminari (= 1.2.1)
   listen (= 3.1.5)
   pg (= 1.1.4)
   puma (= 4.3.4)
   rails (= 6.0.3)
   rails-controller-testing (= 1.0.4)
   rspec-rails (= 4.0.1)
-  sassc-rails
+  sassc-rails (= 2.1.2)
   selenium-webdriver (= 3.142.4)
   spring (= 2.1.0)
   spring-watcher-listen (= 2.0.1)
