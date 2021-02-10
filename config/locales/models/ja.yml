@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザ
+      diving_log: 投稿
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（再入力）
+      dinvinlog:
+        dive_number: ダイブNo
+        address: 地域
+        latitude: 緯度
+        longitude: 経度
+        point: ポイント名
+        entry: エントリー方法
+        entry_time: 潜水開始時間
+        exit_time: 浮上時間
+        entry_bar: 開始時残圧
+        exit_bar: 終了時残圧
+        air_temperature: 気温
+        water_temperature: 水温
+        condition: コンディション
+        transparency: 透明度
+        ave_depth: 平均水深
+        max_depth: 最大水深
+        equipment: 装備
+        comment: コメント
+        published: 公開設定

@@ -12,6 +12,7 @@ Capybara.default_max_wait_time = 5
 Capybara.ignore_hidden_elements = true
 # Add additional requires below this line. Rails is not loaded until this point!
 
+Geocoder.configure(lookup: :test, ip_lookup: :test)
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

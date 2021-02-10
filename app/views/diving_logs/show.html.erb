@@ -1,0 +1,144 @@
+<% provide(:title, "Dive No.#{@diving_log.dive_number}") %>
+
+<div class="container log-detail">
+  <div class="row justify-content-md-center">
+    <div class="log-detail-top log-detail-item col-lg-3 ">
+      <h1 class="dive_number">Dive No.<%= @diving_log.dive_number %></h1>
+    </div>
+    <div class="diving_log_link log-detail-item col-lg-7">
+      <h4>アカウント名：</h4>
+      <h3><%= link_to @diving_log.user.name, @diving_log.user %></h3>
+    </div>
+    <div class="log-detail-item address col-lg-10">
+      <h4>潜水地：</h4>
+      <h3><%= @diving_log.address %></h3>
+      <div class="log-map" id='map'></div>
+      <hr>
+      <h4>ポイント名：</h4>
+      <h3><%= @diving_log.point %></h3>
+    </div>
+    <div class="log-detail-item time col-lg-5">
+      <h4>潜水開始時間：</h4>
+      <h3><%= l @diving_log.entry_time %></h3>
+      <hr>     
+      <h4>浮上時間：</h4>
+      <h3><%= l @diving_log.exit_time %></h3>
+      <hr>
+      <h4>潜水時間：</h4>
+      <h3><%= (@diving_log.exit_time - @diving_log.entry_time).round/60 %>分</h3>
+    </div>
+    <div class="log-detail-item bar col-lg-5">
+      <h4>開始時残圧：</h4>
+      <h3><%= @diving_log.entry_bar %>bar</h3>
+      <hr>
+      <h4>浮上時残圧：</h4>
+      <h3><%= @diving_log.exit_bar %>bar</h3>
+      <hr>
+      <h4>使用空気圧：</h4>
+      <h3><%= (@diving_log.entry_bar - @diving_log.exit_bar) %>bar</h3>
+    </div>
+    <div class="log-detail-item depth col-lg-5">
+      <h4>平均水深：</h4>
+      <h3><%= @diving_log.ave_depth %>m</h3>
+      <hr>
+      <h4>最大水深：</h4>
+      <h3><%= @diving_log.max_depth %>m</h3>
+    </div>
+    <div class="log-detail-item temperature col-lg-5">
+      <h4>気温：</h4>
+      <h3>
+        <% if (air = @diving_log.air_temperature) %>
+          <%= air %>°C</h3>
+        <% else %>
+          記載なし
+        <% end %>
+      </h3>
+      <hr>
+      <h4>水温：</h4>
+      <h3>
+        <% if (water = @diving_log.water_temperature) %>
+          <%= water %>°C</h3>
+        <% else %>
+          記載なし
+        <% end %>
+      </h3>
+    </div>
+    <div class="log-detail-item transparency col-lg-5">
+      <h4>透明度：</h4>
+      <h3>
+        <% if (trs = @diving_log.transparency ) %>
+          <%= trs %>m
+        <% else %>
+          記載なし
+        <% end %>
+      </h3>
+    </div>
+    <div class="log-detail-item entry col-lg-5">
+      <h4>エントリー方法：</h4>
+      <h3>
+        <% if (entry_way = @diving_log.entry) %>
+          <%= entry_way %>
+        <% else %>
+          記載なし
+        <% end %>
+      </h3>
+    </div>
+    <div class="log-detail-item equipment col-lg-10">
+      <h4>装備：</h4>
+      <p>
+        <% if (equip = @diving_log.equipment) %>
+          <%= equip %>
+        <% else %>
+          記載なし
+        <% end %>
+      </p>
+    </div>
+    <div class="log-detail-item comment col-lg-10">
+      <h4>コメント：</h4>
+      <p>
+        <% if (com = @diving_log.comment) %>
+          <%= com %>
+        <% else %>
+          記載なし
+        <% end %>
+      </p>
+    </div>
+    <% if (pics = @diving_log.images) %>
+      <div class="log-detail-item equipment col-lg-10">
+        <h4>画像：</h4>
+        <div class="pictures">
+          <% pics.each do |image| %>
+            <%= image_tag image.to_s %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap" async defer></script>
+<script>
+  var map;
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+      center: {
+        lat: gon.diving_log.latitude,
+        lng: gon.diving_log.longitude
+      },
+      zoom: 8,
+    });
+
+    marker = new google.maps.Marker({
+      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      position: {
+        lat: gon.diving_log.latitude,
+        lng: gon.diving_log.longitude
+      },
+      map: map
+    });
+  }
+</script>

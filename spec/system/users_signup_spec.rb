@@ -8,7 +8,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in 'Email', with: 'user@invalid'
     fill_in 'Password', with: 'foo'
     fill_in 'Password Confirmation', with: 'bar'
-    click_on 'Create my account'
+    click_on 'アカウントを作成する'
     expect(current_path).to eq users_path
     expect(page).to have_selector '#error_explanation'
   end
@@ -19,7 +19,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in 'Email', with: 'user@example.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
-    click_on 'Create my account'
+    click_on 'アカウントを作成する'
     expect(current_path).to eq root_path
     expect(page).not_to have_selector '#error_explanation'
   end

@@ -1,0 +1,35 @@
+<div class="card">
+  <li id="diving_logs<%= diving_log.id %>">
+    <div class="log_top">
+      <%= link_to gravatar_for(diving_log.user, size: 50), diving_log.user %>
+      <%= link_to "このログの詳細を見る", diving_log, class:"btn btn-secondary", role: "button", id: "detail_button" %>
+      <h1 class="dive_number">Dive No.<%= diving_log.dive_number %></h1>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item user_link">
+        <h4>アカウント名：</h4>
+        <h3><%= link_to diving_log.user.name, diving_log.user %></h3>
+      </li>
+      <li class="list-group-item address">
+        <h4>潜水地：</h4>
+        <h3><%= diving_log.address %></h3>
+      </li>
+      <li class="list-group-item entry-t">
+        <h4>潜水開始時間：</h4>
+        <h3><%= l diving_log.entry_time %></h3>
+      </li>
+      <li class="list-group-item exit-t">
+        <h4>浮上時間：</h4>
+        <h3><%= l diving_log.exit_time %></h3>
+      </li>
+      <li class="list-group-item max-d">
+        <h4>最大水深</h4>
+        <h3><%= diving_log.max_depth %>m</h3>
+      </li>
+      <li class="list-group-item comment">
+        <h4>コメント</h4>
+        <p><%= diving_log.comment %></p>
+      </li>
+    </ul>
+  </li>
+</div>

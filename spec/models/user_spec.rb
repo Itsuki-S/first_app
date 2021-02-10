@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   
-  let(:user) { User.new(
-    name: "Example User",
-    email: "hoge@example.com",
-    password: "foobar",
-    password_confirmation: "foobar"
-  ) }
+  let(:user) { FactoryBot.create(:user) }
 
   describe "User" do
     it "should be valid" do
@@ -107,7 +102,18 @@ RSpec.describe User, type: :model do
     end
   end
 
-  it 'authenticated? returns flase for a user with nil digest' do
-    expect(user.authenticated?(:remember ,'')).to be_falsey
+  describe "authenticated?" do
+    it "returns flase for a user with nil digest" do
+      expect(user.authenticated?(:remember ,'')).to be_falsey
+    end
+  end
+
+  describe "diving_log" do
+    it "is destroyed when user is destroyed" do
+      user.diving_logs.create!(dive_number: "13", address: "東京", entry_time: 1.day.ago, exit_time: Time.zone.now, entry_bar: "200", exit_bar: "100", ave_depth: "10", max_depth:25)
+      expect do
+        user.destroy
+      end.to change(DivingLog, :count).by(-1)
+    end
   end
 end

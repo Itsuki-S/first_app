@@ -12,7 +12,7 @@ RSpec.describe "UsersEditSpecs", type: :system do
     fill_in 'Email', with: 'user@invalid'
     fill_in 'Password', with: 'foo'
     fill_in 'Password Confirmation', with: 'bar'
-    click_on 'Save changes'
+    click_on '変更を保存する'
     aggregate_failures do
       expect(current_path).to eq user_path(user)
       expect(has_css?('.alert-danger')).to be_truthy
@@ -24,7 +24,7 @@ RSpec.describe "UsersEditSpecs", type: :system do
     fill_in 'Email', with: 'foo@bar.com'
     fill_in 'Password', with: ''
     fill_in 'Password Confirmation', with: ''
-    click_on 'Save changes'
+    click_on '変更を保存する'
     aggregate_failures do
       expect(current_path).to eq user_path(user)
       expect(has_css?('.alert-success')).to be_truthy

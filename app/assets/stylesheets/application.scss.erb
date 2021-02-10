@@ -69,6 +69,10 @@ header {
       opacity: 0.9;
     }
   }
+  .navbar-toggler{
+    width: 120px !important;
+    height: 60px !important;
+  }
 }
 
 /* pagination */
@@ -92,16 +96,26 @@ header {
       text-shadow:1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000;
       font-weight: bold;
       margin-bottom: 0.75rem;
-      margin-left: auto;
+      text-align: center;
       color: white;
     }
     h1 {
       margin-bottom: 1.5rem;
     }
     a {
+      display: block;
+      padding-top:24px;
+      padding-bottom: 24px;
+      margin-left: auto;
+      margin-right: auto;
       margin-bottom: 2rem;
     }
   }
+}
+
+.jumbotron-fluid {
+    margin: 16px;
+    border-radius: 10px;
 }
 
 .top-page h2, .top-page p {
@@ -159,9 +173,23 @@ footer {
 
 /* sidebar */
 
+.sidebar_fixed {
+  position: sticky;
+  top: 60px;
+}
+.sidebar_content {
+  margin-bottom: 100px;
+}
+
 aside {
   section.user_info {
+    margin-left: 5px;
     margin-top: 20px;
+    a {
+      margin-top: 2rem;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
   }
   section {
     padding: 10px 0;
@@ -170,17 +198,9 @@ aside {
       border: 0;
       padding-top: 0;
     }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
+    h3 {
+      font-weight: bold;
+      margin-top: 35px;
     }
   }
 }
@@ -188,7 +208,9 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
-}
+  border: solid 3px #444;
+  border-radius: 10px;
+  }
 
 /* users index */
 
@@ -214,6 +236,55 @@ aside {
   }
 }
 
+// logs
+.log-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.diving_logs{
+  ol {
+    padding: 0;
+    list-style: none;
+  }
+
+.logs_overview{
+  .card{
+      padding: 0.5em 1em;
+      margin: 2em 0;
+      color: #5d627b;
+      background: white;
+      border-top: solid 5px #5d627b;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+      .log_top{
+          text-align: center; 
+          vertical-align: center;
+          border-bottom: solid 2px #eee;
+        .dive_number{
+            margin-top: 8px;
+            margin-bottom: 18px;
+          }
+        .btn { 
+          float: right;
+          padding-top: 15px;
+          padding-bottom: 15px;
+        }
+      }
+    }
+  }
+  .list-group-item{
+    h3 h4 {
+      display: inline-block;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+}
+      
+
 /* form */
 
 .form-container {
@@ -233,6 +304,7 @@ aside {
 
 .form-submit {
   width: 100%;
+  padding: 20px;
 }
 
 .gravatar_edit {
@@ -267,3 +339,45 @@ aside {
     font-weight: normal;
   }
 }
+
+/* log form */
+
+.log-form{
+    .inputFile {
+      display: flex;
+    }
+
+    .container-lg{
+      width: 90%;
+    }
+  }
+
+/* map */
+
+#map{
+  height: 400px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+ /* log-detail */
+
+.log-detail {
+  margin-top: 60px;
+  .log-detail-item {
+    background: white;
+    padding: 15px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    color: #5d627b;
+    border-radius: 10px;
+    margin: 3px;
+    h3, .pictures {
+      text-align: center;
+    }
+  }
+  .log-detail-top{
+        padding-top: 25px;
+        text-align: center;
+  } 
+}
+

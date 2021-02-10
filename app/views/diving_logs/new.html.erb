@@ -1,0 +1,167 @@
+<% provide(:title, "New log") %>
+
+<div class="container-lg form-container log-form">
+  <h1 class="form-title">新しいログの作成</h1>
+  <div class="row">
+    <%= form_with(model: @diving_log, url: diving_logs_path, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="row">
+        <div class="form-group col-6">
+          <%= f.label :dive_number, "ダイブNo." %>
+          <%= f.number_field :dive_number, class: 'form-control form-control-lg', placeholder: "数字を入れて下さい" %>
+        </div>
+        <div class="form-group col-3 ml-auto mr-auto">
+          <%= f.label :published, "ログ公開設定" %>
+          <%= f.select :published, [["公開する", true], ["非公開にする", false]] %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <%= f.label :address, "潜水地" %>
+          <%= f.text_field :address, id: "address", class: "form-control form-control-lg", placeholder: "潜った地域を入れて下さい" %>
+        </div>
+        <input class="btn-lg btn-info col-6 col-lg-4 ml-auto mr-auto" type="button" value="マップに潜水地を表示する" onclick="codeAddress()">
+        <div class="col-12 log-map" id='map'></div>
+        <div class="form-group col-lg-7">
+          <%= f.label :point, "潜水ポイント" %>
+          <%= f.text_field :point, class: "form-control form-control-lg", placeholder: "潜ったポイント名を入れて下さい" %>
+        </div>
+        <div class="form-group col-lg-5">
+          <%= f.label :entry, "エントリー方法" %>
+          <%= f.text_field :entry, class: "form-control form-control-lg", placeholder: "ボートorビーチ" %>
+        </div>
+        <div class="form-group col-lg-6">
+          <%= f.label :entry_time, "潜水開始時間：" %>
+          <%= f.datetime_select :entry_time, class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-lg-6">
+          <%= f.label :exit_time, "浮上時間：" %>
+          <%= f.datetime_select :exit_time, class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-lg-3">
+          <%= f.label :entry_bar, "潜水開始時残圧(bar)" %>
+          <%= f.number_field :entry_bar, class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-lg-3">
+          <%= f.label :exit_bar, "浮上時残圧(bar)" %>
+          <%= f.number_field :exit_bar, class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-lg-3">
+          <%= f.label :ave_depth, "平均水深(m)" %>
+          <%= f.number_field :ave_depth, step: "0.1", class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-lg-3">
+          <%= f.label :max_depth, "最大水深(m)" %>
+          <%= f.number_field :max_depth, step: "0.1", class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-lg-4">
+          <%= f.label :air_temperature, "気温(°C)" %>
+          <%= f.number_field :air_temperature, step: "0.1", class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-lg-4">
+          <%= f.label :water_temperature, "水温(°C)" %>
+          <%= f.number_field :water_temperature, step: "0.1", class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-lg-4">
+          <%= f.label :transparency, "透明度(m)" %>
+          <%= f.number_field :transparency, class: "form-control form-control-lg" %>
+        </div>
+        <div class="form-group col-12">
+          <%= f.label :condition, "天候や水中の状態" %>
+          <%= f.text_field :condition, class: "form-control form-control-lg", placeholder: "天気や波, うねりの有無などについてお書き下さい" %>
+        </div>
+        <div class="form-group col-12">
+          <%= f.label :equipment, "装備" %>
+          <%= f.text_field :equipment, class: "form-control form-control-lg", placeholder: "スーツの種類やウエイトについてお書き下さい" %>
+        </div>
+        <div class="form-group col-12">
+          <%= f.label :comment, "コメント" %>
+          <%= f.text_area :comment, size: "30x5", class: "form-control form-control-lg" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-12">
+          <div class='inputFile'>
+            <div class="custom-file">
+              <%= f.file_field :images, accept: "image/jpeg,image/gif,image/png", multiple: true, class: "custom-file-input", id: "customFile" %>
+              <%= f.label :images, '画像', class: "custom-file-label" %>
+            </div>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-outline-secondary input-group-text" id="inputFileReset">取消</button>
+            </div>
+          </div>
+            <p>shiftやcommandを押しながら選択する事で複数枚アップロードできます</p>
+        </div>
+        <div class="form-group col-12">
+          <%= f.submit "投稿する!", class: "btn btn-primary btn-lg form-submit", id: "post_button", data: { confirm: "この内容で保存しますか？"} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+  <script>
+    bsCustomFileInput.init();
+    document.getElementById('inputFileReset').addEventListener('click', function() {
+
+    bsCustomFileInput.destroy();
+
+    var elem = document.getElementById('customFile');
+    elem.value = '';
+    var clone = elem.cloneNode(false);
+    elem.parentNode.replaceChild(clone, elem);
+
+    bsCustomFileInput.init();
+    });
+
+    $("#customFile").bind("change", function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert("１つの写真ファイルサイズは5MBまでにして下さい");
+      bsCustomFileInput.destroy();
+
+      var elem = document.getElementById('customFile');
+      elem.value = '';
+      var clone = elem.cloneNode(false);
+      elem.parentNode.replaceChild(clone, elem);
+
+      bsCustomFileInput.init();
+      }
+    });
+
+    /* google map */
+
+    var map
+    var geocoder
+
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 35.681, lng: 139.767},
+      zoom: 8
+      });
+    }
+
+    function codeAddress(){
+      // 入力を取得
+      let inputAddress = document.getElementById('address').value;
+
+      // geocodingしたあとmapを移動
+      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+        if (status == 'OK') {
+      // map.setCenterで地図が移動
+          map.setCenter(results[0].geometry.location);
+
+      // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap" async defer></script>

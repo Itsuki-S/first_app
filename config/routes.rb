@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :diving_logs,         except: :index
+  get     '/diving_logs', to: 'diving_logs#new' #log作成失敗時にページをリロードするとno routeになってしまうのを防ぐ為
 end

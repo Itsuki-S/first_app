@@ -1,0 +1,2 @@
+module DivingLogsHelper
+end

@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_064827) do
+ActiveRecord::Schema.define(version: 2021_02_08_035440) do
+
+  create_table "diving_logs", force: :cascade do |t|
+    t.integer "dive_number"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "point"
+    t.string "entry"
+    t.datetime "entry_time"
+    t.datetime "exit_time"
+    t.integer "entry_bar"
+    t.integer "exit_bar"
+    t.float "air_temperature"
+    t.float "water_temperature"
+    t.string "condition"
+    t.integer "transparency"
+    t.float "ave_depth"
+    t.float "max_depth"
+    t.string "equipment"
+    t.text "comment"
+    t.boolean "published", default: true
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "images"
+    t.index ["user_id", "entry_time"], name: "index_diving_logs_on_user_id_and_entry_time"
+    t.index ["user_id"], name: "index_diving_logs_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -28,4 +56,5 @@ ActiveRecord::Schema.define(version: 2021_02_04_064827) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "diving_logs", "users"
 end
