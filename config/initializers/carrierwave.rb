@@ -4,9 +4,10 @@ require 'carrierwave/storage/fog'
  
 CarrierWave.configure do |config|
   if Rails.env.production?
-    config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory  = ENV['AWS_BUCKET']
+    config.asset_host = "https://s3-#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['AWS_BUCKET']}"
+    config.fog_public = false
     config.fog_credentials = {
       provider: 'AWS',
       aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
@@ -14,10 +15,6 @@ CarrierWave.configure do |config|
       region: ENV['AWS_REGION'],
       path_style: true
     }
-    config.asset_host = "https://s3-#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['AWS_BUCKET']}"
-  else
-    config.storage :file
-    config.enable_processing = false if Rails.env.test?
   end
 end
  
