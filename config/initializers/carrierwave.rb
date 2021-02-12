@@ -14,6 +14,7 @@ CarrierWave.configure do |config|
       region: ENV['AWS_REGION'],
       path_style: true
     }
+    config.asset_host = "https://s3-#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['AWS_BUCKET']}"
   else
     config.storage :file
     config.enable_processing = false if Rails.env.test?
