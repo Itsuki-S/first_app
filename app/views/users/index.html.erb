@@ -11,6 +11,9 @@
           | <%= link_to "delete", user, method: :delete,
                             data: { confirm: "You sure?" } %>
         <% end %>
+        <h3>Log count: <%= user.diving_logs.count %></h3>
+        <hr>
+        <p><%= Faker::ChuckNorris.fact %></p>
       </li>
     <% end %>
   </ul>

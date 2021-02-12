@@ -2,19 +2,23 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <div class="form-group">
-    <%= f.text_field :name, class: 'form-control', placeholder: "Name" %>
+    <%= f.text_field :name, class: 'form-control form-control-lg', placeholder: "Name" %>
   </div>
 
   <div class="form-group">
-    <%= f.email_field :email, class: 'form-control', placeholder: "Email" %>
+    <%= f.email_field :email, class: 'form-control form-control-lg', placeholder: "Email" %>
   </div>
 
   <div class="form-group">
-    <%= f.password_field :password, class: 'form-control', placeholder: "Password"%>
+    <%= f.password_field :password, class: 'form-control form-control-lg', placeholder: "Password"%>
   </div>
 
   <div class="form-group">
-    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Password Confirmation"%>
+    <%= f.password_field :password_confirmation, class: 'form-control form-control-lg', placeholder: "Password Confirmation"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :profile, size: "30x5", class: 'form-control form-control-lg', placeholder: "Profile"%>
   </div>
 
   <div class="form-group">

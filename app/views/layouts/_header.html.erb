@@ -26,10 +26,10 @@
             </li>
 
             <li class="nav-item active d-flex p-3">
-              <%= link_to "#", class: "my-auto" do %>
+              <%= link_to current_user, class: "my-auto" do %>
                 <i class="far fa-address-book fa-2x icon"></i>
               <% end %>
-              <%= link_to "My logs", '#', class: "nav-link"%>
+              <%= link_to "My logs", current_user, class: "nav-link"%>
             </li>
 
             <li class="nav-item active dropdown p-3">

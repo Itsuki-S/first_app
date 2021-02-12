@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :profile, length: { maximum: 255 }
 
   class << self
     # 渡された文字列のハッシュ値を返す

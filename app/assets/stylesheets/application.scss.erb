@@ -91,7 +91,7 @@ header {
 .jumbotron-extended {
   background-image: url(<%= asset_path "diving_jumbotron.jpg" %>);
   background-size: cover;
-  .container {
+  .container-fluid {
     h1, p {
       text-shadow:1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000;
       font-weight: bold;
@@ -173,42 +173,35 @@ footer {
 
 /* sidebar */
 
-.sidebar_fixed {
-  position: sticky;
-  top: 60px;
-}
-.sidebar_content {
-  margin-bottom: 100px;
-}
-
 aside {
+  margin-bottom: 100px;
   section.user_info {
-    margin-left: 5px;
+    position: sticky;
+    top: 60px;
+    margin: 20px 0px 3px 3px;
+    padding: 10px 0;
     margin-top: 20px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    border-top: solid 5px #5d627b;
+    color: #444;
     a {
       margin-top: 2rem;
       padding-top: 30px;
       padding-bottom: 30px;
     }
-  }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
     h3 {
+      text-align: center;
+      border-bottom: solid 2px #eee;
+      margin-top: 10px;
       font-weight: bold;
-      margin-top: 35px;
     }
   }
 }
 
 .gravatar {
   float: left;
-  margin-right: 10px;
-  border: solid 3px #444;
+  margin: 0px 10px 10px 0px;
+  border: solid 3px #5d627b;
   border-radius: 10px;
   }
 
@@ -249,9 +242,12 @@ aside {
     padding: 0;
     list-style: none;
   }
-
-.logs_overview{
-  .card{
+  h2 { 
+    margin-top: 10rem;
+    text-align: center; 
+  }
+  .logs_overview{
+    .card{
       padding: 0.5em 1em;
       margin: 2em 0;
       color: #5d627b;
@@ -292,6 +288,10 @@ aside {
   padding-top: 2rem !important;
 }
 
+.form-base {
+  margin: auto;
+}
+
 .form-title {
   text-align: center;
   font-weight: bold;
@@ -305,6 +305,7 @@ aside {
 .form-submit {
   width: 100%;
   padding: 20px;
+  margin-bottom: 2rem;
 }
 
 .gravatar_edit {
@@ -379,5 +380,9 @@ aside {
         padding-top: 25px;
         text-align: center;
   } 
+  .btn {
+    margin-top: 1rem;
+    padding: 1rem;
+  }
 }
 

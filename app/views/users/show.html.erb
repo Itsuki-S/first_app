@@ -2,12 +2,20 @@
 <div class="container-fluid">
   <div class="row">
     <aside class="col-lg-3 container sidebar_content">
-      <section class="user_info row sidebar_fixed" data-turbolinks="false">
-        <%= gravatar_for @user, size: 100 %>
-        <h3><%= @user.name %></h3>
-        <% if @user == current_user %>
-          <%= link_to "ログを作成する", new_diving_log_url, class:"btn btn-info w-100", role: "button" %>
-        <% end %>
+      <section class="user_info sidebar_fixed bg-white" data-turbolinks="false">
+        <div class="card-body row justify-content-center">
+          <%= gravatar_for @user, size: 100, class: "col-3" %>
+          <div class="col-9">
+            <h3><%= @user.name %></h3>
+            <h3>Log: <%= @user.diving_logs.count %></h3>
+          </div>
+          <div class="col-10">
+            <%= @user.profile %>
+          </div>
+          <% if @user == current_user %>
+            <%= link_to "ログを作成する", new_diving_log_url, class:"btn btn-lg btn-secondary w-100", role: "button" %>
+          <% end %>
+        </div>
       </section>
     </aside>
     <div class="col-lg-9 diving_logs">

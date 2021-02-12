@@ -1,8 +1,8 @@
 <div class="card">
   <li id="diving_logs<%= diving_log.id %>">
-    <div class="log_top">
+    <div class="log_top" data-turbolinks="false">
       <%= link_to gravatar_for(diving_log.user, size: 50), diving_log.user %>
-      <%= link_to "このログの詳細を見る", diving_log, class:"btn btn-secondary", role: "button", id: "detail_button" %>
+      <%= link_to "このログの詳細を見る", diving_log, class:"btn btn-lg btn-secondary", role: "button", id: "detail_button" %>
       <h1 class="dive_number">Dive No.<%= diving_log.dive_number %></h1>
     </div>
     <ul class="list-group list-group-flush">

@@ -11,18 +11,20 @@ User.create!(name: "Diver one",
              password: "diving",
              password_confirmation: "diving",
              admin: true,
+             profile: Faker::ChuckNorris.fact,
              activated: true,
              activated_at: Time.zone.now)
 
 #その他のサンプルユーザの作成
 99.times do |n|
-  name  = "Diver #{Faker::Internet.username}"
+  name  = Faker::Internet.username
   email = "example-#{n+1}@divers.co.jp"
   password = "password"
   User.create!(name:  name,
                email: email,
                password:              password,
                password_confirmation: password,
+               profile: Faker::ChuckNorris.fact,
                activated: true,
                activated_at: Time.zone.now)
 end

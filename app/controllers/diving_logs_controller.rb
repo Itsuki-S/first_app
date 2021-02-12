@@ -1,6 +1,6 @@
 class DivingLogsController < ApplicationController
   before_action :logged_in_user, only: [:new, :show, :edit, :create, :update, :destroy]
-
+  before_action :correct_user, only: [:edit, :update, :destroy]
   def new
     @diving_log = current_user.diving_logs.build
   end
@@ -20,6 +20,24 @@ class DivingLogsController < ApplicationController
     gon.diving_log = @diving_log
   end
 
+  def edit
+  end
+
+  def update
+    @diving_log.update_attributes(diving_log_params)
+    if @diving_log.save
+      flash[:success] = "ログが編集されました！"
+      redirect_to current_user
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @diving_log.destroy
+    flash[:success] = "ログが削除されました"
+    redirect_to current_user
+  end
 
   private
     def diving_log_params
@@ -45,5 +63,13 @@ class DivingLogsController < ApplicationController
         :published,
         {images: []}
       )
+    end
+
+    def correct_user
+      @diving_log = current_user.diving_logs.find_by(id: params[:id])
+      if @diving_log.nil?
+        flash[:warning] = "無効なリクエストです"
+        redirect_to root_path
+      end
     end
 end

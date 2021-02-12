@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   private
   #strong parameters を使うことでセキュリティホールを無くす
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile)
     end
 
     def correct_user

@@ -8,7 +8,7 @@ RSpec.describe "diving_log_show", type: :system do
     login_as(user)
     click_on :detail_button
     aggregate_failures do
-      expect(page).to have_content "Dive No.1"
+      expect(page).to have_content "Dive No.#{diving_log.dive_number}"
       expect(page).to have_link user.name
       expect(page).to have_content "記載なし"
       expect(page).to have_selector 'img'

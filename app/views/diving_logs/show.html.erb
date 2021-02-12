@@ -114,6 +114,12 @@
       </div>
     <% end %>
   </div>
+  <% if @diving_log.user == current_user %>
+    <div class="row justify-content-md-around" data-turbolinks="false">
+      <%= link_to "戻る", :back, class:"btn btn-lg btn-secondary col-4" %>
+      <%= link_to "ログを編集する", edit_diving_log_path, class:"btn btn-lg btn-success col-5", role: "button" %>
+    </div>
+  <% end %>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap" async defer></script>

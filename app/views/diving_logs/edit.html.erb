@@ -1,0 +1,13 @@
+<% provide(:title, "Log editing") %>
+<% provide(:button_text, '変更を保存する') %>
+
+<div class="container-lg form-container log-form">
+  <h1 class="form-title">ログの編集</h1>
+  <div class="row">
+    <%= render 'log_form' %>
+  </div>
+  <div class="row justify-content-around">
+    <%= link_to "戻る", :back, class:"btn btn-lg btn-secondary form-submit col-5" %>
+    <%= link_to "ログを削除する", diving_log_path(@diving_log), method: :delete, class:"btn btn-lg btn-danger form-submit col-6", role: "button", id: "delete_button", data: { confirm: "本当に削除しますか？" } %>
+  </div>
+</div>

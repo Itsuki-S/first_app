@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_035440) do
+ActiveRecord::Schema.define(version: 2021_02_12_013705) do
 
   create_table "diving_logs", force: :cascade do |t|
     t.integer "dive_number"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_035440) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
