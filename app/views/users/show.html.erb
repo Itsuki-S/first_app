@@ -1,13 +1,13 @@
 <% provide(:title, @user.name) %>
 <div class="container-fluid">
   <div class="row">
-    <aside class="col-lg-3 container sidebar_content">
+    <aside class="col-xl-3 ml-xl-0 container sidebar_content">
       <section class="user_info sidebar_fixed bg-white" data-turbolinks="false">
         <div class="card-body row justify-content-center">
           <%= gravatar_for @user, size: 100, class: "col-3" %>
-          <div class="col-9">
+          <div class="col-12">
             <h3><%= @user.name %></h3>
-            <h3>Log: <%= @user.diving_logs.count %></h3>
+            <h3>Log count: <%= @user.diving_logs.count %></h3>
           </div>
           <div class="col-10">
             <%= @user.profile %>
@@ -18,7 +18,7 @@
         </div>
       </section>
     </aside>
-    <div class="col-lg-9 diving_logs">
+    <div class="col-xl-7 mx-auto diving_logs">
       <h1 class="log-title">ダイビングログ一覧</h1>
       <% if @user.diving_logs.any? %>
         <%= paginate @diving_logs, theme: 'twitter-bootstrap-4' %>

@@ -23,5 +23,9 @@ FactoryBot.define do
     trait :image_attached do
       images {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.jpg'))}
     end
+
+    trait :non_published do
+      published { false }
+    end
   end
 end

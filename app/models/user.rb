@@ -73,6 +73,10 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  def feed
+    DivingLog.where("published = ?", true)
+  end
+
   private
     #Userのemailを小文字にする
     def downcase_email

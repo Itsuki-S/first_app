@@ -4,6 +4,7 @@ RSpec.describe "DivingLogs", type: :request do
   let(:user) {FactoryBot.create(:user)}
   let(:tester) { FactoryBot.create(:user) }               
   let!(:diving_log) {FactoryBot.create(:diving_log, user: user)}
+  let!(:private_diving_log) {FactoryBot.create(:diving_log, :non_published)}
   let(:image_path) { File.join(Rails.root, 'spec/fixtures/test.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path) }
 
@@ -25,7 +26,13 @@ RSpec.describe "DivingLogs", type: :request do
       get diving_log_path(diving_log)
       expect(response).to redirect_to login_path
     end
-    
+
+    it "doesn't show non-published posts for another user" do
+      log_in_as(user)
+      get diving_log_path(private_diving_log)
+      expect(response).to redirect_to root_path
+    end
+     
     it "succeeds when logged_in" do
       log_in_as(user)
       get diving_log_path(diving_log)

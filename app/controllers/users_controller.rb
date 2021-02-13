@@ -21,7 +21,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
-    @diving_logs = @user.diving_logs.all.page(params[:page]).per(10)
+    if @user == current_user
+      @diving_logs = @user.diving_logs.all.page(params[:page]).per(10)
+    else
+      @diving_logs = @user.feed.all.page(params[:page]).per(10)
+    end
   end
 
   def edit

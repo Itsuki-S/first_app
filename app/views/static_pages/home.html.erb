@@ -1,40 +1,65 @@
 <% provide(:title, "Home") %>
 
-<div class="jumbotron jumbotron-fluid jumbotron-extended">
+<% if logged_in? %>
   <div class="container-fluid">
-    <h1>Let's log and share!</h1>
-    <p class="vw">スキューバダイビングのログを記録して他の人と共有しませんか？</p>
-    <p class="vw">Diver's LogはダイビングログとSNSを掛け合わせたwebアプリです!</p>
-    <p class="vw">メールアドレスを登録してこのアプリを使ってみましょう!</p>
-    <%= link_to "Sign up!", signup_path, class: "vw btn btn-secondary btn-lg w-50" %>
-    <p class="vw">ログインはこちらから!</p>
-    <%= link_to "Sign in!", login_path, class: "vw btn btn-secondary btn-lg w-50" %>
-  </div>
-</div>
-
-<div class="container">
-  <div class="container discription-container top-page">
     <div class="row">
-      <div class="col-lg-6">
-        <i class="fas fa-atlas my-icon"></i>
-        <h2>ダイビングログを記録</h2>
-        <p>ダイビングの後に記録するログをオンライン上に保存することができます。PC・スマホ・タブレットからアクセスできるので、もう紙媒体のログを持ち歩く必要はありません</p>
-      </div>
-      <div class="col-lg-6">
-        <i class="fas fa-share-square my-icon"></i>
-        <h2>ログを他のユーザーとシェア</h2>
-        <p>保存したログを他のユーザーと共有しましょう。あなたは他のユーザーが投稿したログをタイムラインで閲覧することもできます。もちろん、ログを共有するかはあなたが自由に決められます。</p>
-      </div>
-      <div class="col-lg-6">
-        <i class="fas fa-camera my-icon"></i>
-        <h2>画像投稿</h2>
-        <p>紙媒体のログとは異なり、ダイビングで撮影した写真をログと一緒に記録することもできます。あなたのログはより鮮明で見返すのが面白いものになるでしょう。</p>
-      </div>
-      <div class="col-lg-6">
-        <i class="fas fa-map-marked-alt my-icon"></i>
-        <h2>ロケーション</h2>
-        <p>ダイビングを行ったロケーションをGoogle map機能を使って視覚的に記録しましょう。こうすることで潜った場所を直感的に把握できるようになります。</p>
+      <aside class="col-2 ml-0 container sidebar_content bg-dark">
+        <section class="top-nav sidebar_fixed" data-turbolinks="false">
+          <h4>Navigation</h4>
+          <%= link_to "My logs", user_url(@user), class:"btn btn-lg btn-outline-success w-100", role: "button" %> 
+          <%= link_to "New log", new_diving_log_url, class:"btn btn-lg btn-outline-warning w-100", role: "button" %>
+          <%= link_to "All users", users_url, class:"btn btn-lg btn-outline-info w-100", role: "button" %>
+          <%= link_to "User setting", edit_user_path(current_user), class:"btn btn-lg btn-outline-light w-100", role: "button" %>
+          <%= link_to "Help page", '/help', class:"btn btn-lg btn-outline-primary w-100", role: "button" %>
+          <%= link_to "Logout", logout_path, method: :delete, class:"btn btn-lg btn-outline-danger w-100", role: "button" %>
+        </section>
+      </aside>
+      <div class="col-8 mx-auto diving_logs">
+        <h1 class="log-title">公開ログ一覧</h1>
+          <%= paginate @diving_logs, theme: 'twitter-bootstrap-4' %>
+          <ol class="logs_overview">
+            <%= render @diving_logs %>
+          </ol>
+          <%= paginate @diving_logs, theme: 'twitter-bootstrap-4' %>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="jumbotron jumbotron-fluid jumbotron-extended">
+    <div class="container-fluid">
+      <h1>Let's log and share!</h1>
+      <p class="vw">スキューバダイビングのログを記録して他の人と共有しませんか？</p>
+      <p class="vw">Diver's LogはダイビングログとSNSを掛け合わせたwebアプリです!</p>
+      <p class="vw">メールアドレスを登録してこのアプリを使ってみましょう!</p>
+      <%= link_to "Sign up!", signup_path, class: "vw btn btn-secondary btn-lg w-50" %>
+      <p class="vw">ログインはこちらから!</p>
+      <%= link_to "Sign in!", login_path, class: "vw btn btn-secondary btn-lg w-50" %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="container discription-container top-page">
+      <div class="row">
+        <div class="col-lg-6">
+          <i class="fas fa-atlas my-icon"></i>
+          <h2>ダイビングログを記録</h2>
+          <p>ダイビングの後に記録するログをオンライン上に保存することができます。PC・スマホ・タブレットからアクセスできるので、もう紙媒体のログを持ち歩く必要はありません</p>
+        </div>
+        <div class="col-lg-6">
+          <i class="fas fa-share-square my-icon"></i>
+          <h2>ログを他のユーザーとシェア</h2>
+          <p>保存したログを他のユーザーと共有しましょう。あなたは他のユーザーが投稿したログをタイムラインで閲覧することもできます。もちろん、ログを共有するかはあなたが自由に決められます。</p>
+        </div>
+        <div class="col-lg-6">
+          <i class="fas fa-camera my-icon"></i>
+          <h2>画像投稿</h2>
+          <p>紙媒体のログとは異なり、ダイビングで撮影した写真をログと一緒に記録することもできます。あなたのログはより鮮明で見返すのが面白いものになるでしょう。</p>
+        </div>
+        <div class="col-lg-6">
+          <i class="fas fa-map-marked-alt my-icon"></i>
+          <h2>ロケーション</h2>
+          <p>ダイビングを行ったロケーションをGoogle map機能を使って視覚的に記録しましょう。こうすることで潜った場所を直感的に把握できるようになります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

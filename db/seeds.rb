@@ -30,12 +30,13 @@ User.create!(name: "Diver one",
 end
 
 users = User.order(:created_at).take(12)
+#ダイブNo.1~No.12まで全員同じ内容になります
 12.times do |n|
 	dive_number = n+1
 	address = Gimei.address.city.to_s
 	point = Faker::Creature::Animal.name
 	entry = ["ボート","ビーチ"][rand(2)]
-	entry_time = Faker::Time.between(from: (13-n).month.ago, to: (12-n).month.ago)
+	entry_time = Faker::Time.between(from: (14-n).month.ago, to: (13-n).month.ago)
 	exit_time = entry_time + 1.hour
 	entry_bar = rand(190..210)
 	exit_bar = rand(30..80)
@@ -66,3 +67,23 @@ users = User.order(:created_at).take(12)
     equipment: equipment,
     comment: comment) }
 end
+#ダイブNo.13は全員異なる内容になります
+users.each { |user| 
+    t = Faker::Time.between(from: 1.month.ago, to: Time.zone.now)
+    user.diving_logs.create!(
+    dive_number: 13,
+    address: Gimei.address.city.to_s,
+    point: Faker::Creature::Animal.name,
+    entry: ["ボート","ビーチ"][rand(2)],
+    entry_time: t,
+    exit_time: t + 1.hour,
+    entry_bar: rand(190..210),
+    exit_bar: rand(30..80),
+    air_temperature: rand(5..15),
+    water_temperature: rand(20..25),
+    condition: ["晴れ, 穏やか","曇り, 流れあり", "雨, うねり"][rand(3)],
+    transparency: rand(5..20),
+    ave_depth: rand(10..20).round(1),
+    max_depth: rand(20..30).round(1),
+    equipment: ["ウェットスーツ, アルミタンク, 4kg","ウェット, スチールタンク, 2kg", "ドライスーツ, アルミタンク, 6kg"][rand(3)],
+    comment: Faker::Lorem.paragraphs) }

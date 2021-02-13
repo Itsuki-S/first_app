@@ -16,8 +16,14 @@ class DivingLogsController < ApplicationController
   end
 
   def show
-    @diving_log = DivingLog.find(params[:id])
-    gon.diving_log = @diving_log
+    diving_log = DivingLog.find(params[:id])
+    if diving_log.published == false && diving_log.user != current_user
+      flash[:warning] = "このログは公開されていません"
+      redirect_to root_path
+    else
+      @diving_log = diving_log
+      gon.diving_log = @diving_log
+    end
   end
 
   def edit
