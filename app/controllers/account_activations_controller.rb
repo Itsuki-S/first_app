@@ -1,5 +1,6 @@
 class AccountActivationsController < ApplicationController
   
+  # アカウントを有効化する
   def edit
     user = User.find_by(email: params[:email])
     if user && !user.activated? && user.authenticated?(:activation, params[:id])

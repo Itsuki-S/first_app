@@ -13,7 +13,6 @@ class DivingLog < ApplicationRecord
 
   mount_uploaders :images, ImageUploader
   serialize :images, JSON #develop, test環境でSQLiteを使用しているため
-  geocoded_by :address
+  geocoded_by :address #addressから経度緯度を出す
   before_validation :geocode, if: :address_changed?
-
 end

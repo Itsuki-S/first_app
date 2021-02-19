@@ -15,7 +15,13 @@
       <div class="log-map" id='map'></div>
       <hr>
       <h4>ポイント名：</h4>
-      <h3><%= @diving_log.point %></h3>
+      <h3>
+        <% if (p_name = @diving_log.point) %>
+          <%= p_name %>
+        <% else %>
+          記載なし
+        <% end %>
+      </h3>
     </div>
     <div class="log-detail-item time col-lg-5">
       <h4>潜水開始時間：</h4>

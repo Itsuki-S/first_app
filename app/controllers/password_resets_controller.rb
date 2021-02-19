@@ -2,9 +2,13 @@ class PasswordResetsController < ApplicationController
   before_action :get_user,   only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
+  before_action :check_guest, only: [:create, :edit, :update]
+
+  # パスワードリセット申請ページを表示する
   def new
   end
 
+  # パスワードリセットメールを送る
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user && @user.activated?
@@ -18,9 +22,11 @@ class PasswordResetsController < ApplicationController
     end
   end
 
+  # パスワードリセットページを表示する
   def edit
   end
 
+  # パスワードを変更する
   def update
     if params[:user][:password].empty?
       @user.errors.add(:password, :blank)
@@ -36,10 +42,12 @@ class PasswordResetsController < ApplicationController
   end
   private
 
+    # ストロングパラメータ
     def user_params
       params.require(:user).permit(:password, :password_confirmation)
     end
 
+    # パラメータからユーザーを取得する
     def get_user
       @user = User.find_by(email: params[:email])
     end

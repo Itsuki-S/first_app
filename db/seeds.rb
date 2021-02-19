@@ -8,10 +8,20 @@
 #管理ユーザーの作成
 User.create!(name: "Diver one",
              email: "diver@example.com",
-             password: "diving",
-             password_confirmation: "diving",
+             password: ENV['ADMIN_PASS'],
+             password_confirmation: ENV['ADMIN_PASS'],
              admin: true,
              profile: Faker::ChuckNorris.fact,
+             activated: true,
+             activated_at: Time.zone.now)
+
+#簡単ログイン用のテストユーザーを作成
+pass = SecureRandom.urlsafe_base64
+User.create!(name: "Guest diver",
+             email: "guest@diver.ne.jp",
+             password: pass,
+             password_confirmation: pass,
+             profile: "簡単ログイン用のゲストユーザーです。このユーザーはログの作成、編集、削除はできません。",
              activated: true,
              activated_at: Time.zone.now)
 

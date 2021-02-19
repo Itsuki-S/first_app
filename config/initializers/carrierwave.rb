@@ -2,6 +2,7 @@ require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
  
+# 本番環境ではaws s3のバケットを利用する
 CarrierWave.configure do |config|
   if Rails.env.production?
     config.fog_provider = 'fog/aws'

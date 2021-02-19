@@ -1,3 +1,140 @@
 <% provide(:title, "Help") %>
 
-<p>This is supposed to be help page</p>
+<div class="container help-page">
+  <div class="row justify-content-around">
+    <div class="card mb-3">
+      <%= image_tag 'landing_page.jpg' %>
+      <div class="card-body">
+        <h3 class="card-title">非ログイン時のホーム</h3>
+        <p class="card-text">ユーザ登録を行なってログインして下さい</p>
+        <p class="card-text">かんたんログインでゲストユーザーが使用できます, ただしログの新規作成、編集はできません</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <%= image_tag 'user_new.jpg' %>
+      <div class="card-body">
+        <h3 class="card-title">ユーザー登録ページ</h3>
+        <p class="card-text">ユーザー情報の登録ができます</p>
+        <p class="card-text">アカウント名, メールアドレス, パスワード, プロフィール文が編集できます</p>
+        <p class="card-text">作成を押すと登録したメールアドレスにアカウント有効化のメールが届きます, リンクをクリックすると有効化が完了します</p>
+        <p class="card-text">その後は登録したメールアドレスとパスワードでログインができます</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <%= image_tag 'home_page.jpg' %>
+      <div class="card-body">
+        <h3 class="card-title">ログイン時のホーム</h3>
+        <p class="card-text">公開されている全ユーザーのログが表示されます</p>
+        <p class="card-text">My logs / Profileからユーザー自身のログ一覧が見れます</p>
+        <p class="card-text">New logからログの新規作成ページに行けます</p>
+        <p class="card-text">All users / Usersからユーザの一覧ページに行けます</p>
+        <p class="card-text">User settingからユーザーの設定ページに行けます</p>
+        <p class="card-text">Help page / helpからヘルプページに行けます</p>
+        <p class="card-text">Logoutを押すとユーザーからログアウトします</p>
+      </div>
+    </div>
+    <div class="card mb-3 col-5">
+      <%= image_tag 'user_log.jpg' %>
+      <div class="card-body">
+        <h3 class="card-title">ユーザーぺージ</h3>
+        <p class="card-text">ユーザーが投稿した公開ログの一覧が見られます</p>
+        <p class="card-text">ユーザー自身が閲覧している場合は非公開を含む全投稿が見られます</p>
+        <p class="card-text">「このログの詳細を見る」からログの個別ページが見られます</p>
+        <p class="card-text">「ログを作成する」からログの作成ページに行けます</p>
+      </div>
+    </div>
+    <div class="card mb-3 col-5">
+      <%= image_tag 'users_page.jpg' %>
+      <div class="card-body">
+        <h3 class="card-title">ユーザーの一覧ページ</h3>
+        <p class="card-text">全ユーザーのアカウント名とログの数が表示されます</p>
+        <p class="card-text">アドミンユーザーはユーザーを削除できます</p>
+        <p class="card-text">ユーザーのアカウント名をクリックするとそのユーザーの公開ログ一覧を見ることができます</p>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <%= image_tag 'user_edit.jpg' %>
+      <div class="card-body">
+        <h3 class="card-title">プロフィール編集ページ</h3>
+        <p class="card-text">ユーザー情報の変更ができます</p>
+        <p class="card-text">アカウント名, メールアドレス, パスワード, プロフィール文が編集できます</p>
+        <p class="card-text">プロフィール画像の変更からgravatarに行けます</p>
+      </div>
+    </div>
+    <%= image_tag 'log_new.jpg', class: "col-5" %>
+    <div class="card mb-3 col-7">
+      <div class="card-body">
+        <h3 class="card-title">ログ作成ページ</h3>
+        <br>
+        <p class="card-text">ログの新規作成ができます</p>
+        <br>
+        <p class="card-text">ログの公開設定が「公開する」になっていると他のユーザーが投稿するログを閲覧できるようになります</p>
+        <p class="card-text">ログの公開設定が「非公開にする」になっているとユーザー自身しか見れないようになります</p>
+        <br>
+        <p class="card-text">ログの投稿では以下の項目が必須です</p>
+        <li>ダイブNo.</li>
+        <li>潜水地</li>
+        <li>潜水開始時残圧</li>
+        <li>浮上時残圧</li>
+        <li>平均水深</li>
+        <li>最大水深</li>
+        <br>
+        <p class="card-text">潜水地を入力した後「マップに潜水地を表示する」を押すとGoogle Mapにその地点が表示されます</p>
+        <br>
+        <p class="card-text">画像は複数枚添付することができます</p>
+        <p class="card-text">画像のサイズ制限は5MBです</p>
+      </div>
+    </div>
+    <div class="card mb-3 col-7">
+      <div class="card-body">
+        <h3 class="card-title">ログの詳細ページ</h3>
+        <br>
+        <p class="card-text">ログの詳細が確認できます</p>
+        <br>
+        <p class="card-text">Google Mapにはログの作成で入力された地点が表示されます</p>
+        <br>
+        <p class="card-text">潜水時間と使用空気圧は自動で表示されます</p>
+        <br>
+        <p class="card-text">以下の項目は記載がない場合「記載なし」になります</p>
+        <li>ポイント名</li>
+        <li>気温</li>
+        <li>水温</li>
+        <li>透明度</li>
+        <li>エントリー方法</li>
+        <li>装備</li>
+        <li>コメント</li>
+        <br>
+        <p class="card-text">投稿した画像はリサイズされて表示されます</p>
+        <p class="card-text">投稿者がアクセスすると「ログを編集する」ボタンが表示されます</p>
+        <p class="card-text">「ログを編集する」を押すとログの編集ページに行きます</p>
+      </div>
+    </div>
+    <%= image_tag 'log_show.jpg', class: "col-5" %>
+    <%= image_tag 'log_edit.jpg', class: "col-5" %>
+    <div class="card mb-3 col-7">
+      <div class="card-body">
+        <h3 class="card-title">ログ作成ページ</h3>
+        <br>
+        <p class="card-text">ログの編集ができます</p>
+        <br>
+        <p class="card-text">ログの公開設定が「公開する」になっていると他のユーザーが投稿するログを閲覧できるようになります</p>
+        <p class="card-text">ログの公開設定が「非公開にする」になっているとユーザー自身しか見れないようになります</p>
+        <br>
+        <p class="card-text">ログの編集では以下の項目が必須です</p>
+        <li>ダイブNo.</li>
+        <li>潜水地</li>
+        <li>潜水開始時残圧</li>
+        <li>浮上時残圧</li>
+        <li>平均水深</li>
+        <li>最大水深</li>
+        <br>
+        <p class="card-text">潜水地を入力した後「マップに潜水地を表示する」を押すとGoogle Mapにその地点が表示されます</p>
+        <br>
+        <p class="card-text">画像は複数枚添付することができます</p>
+        <p class="card-text">画像のサイズ制限は5MBです</p>
+        <br>
+        <p class="card-text">「ログを削除する」を押すとログが削除できます</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -73,6 +73,7 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  # 公開設定のログの集合を返す
   def feed
     DivingLog.where("published = ?", true)
   end
