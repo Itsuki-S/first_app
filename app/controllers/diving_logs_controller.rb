@@ -1,7 +1,6 @@
 class DivingLogsController < ApplicationController
   before_action :logged_in_user, only: [:new, :show, :edit, :create, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
-  before_action :check_guest,    only: [:create, :update, :destroy]
   # ログの作成ページを表示する
   def new
     @diving_log = current_user.diving_logs.build

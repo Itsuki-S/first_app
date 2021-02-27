@@ -21,7 +21,7 @@ User.create!(name: "Guest diver",
              email: "guest@diver.ne.jp",
              password: pass,
              password_confirmation: pass,
-             profile: "簡単ログイン用のゲストユーザーです。このユーザーはログの作成、編集、削除はできません。",
+             profile: "簡単ログイン用のゲストユーザーです。このユーザーはユーザー情報の編集、削除はできません。",
              activated: true,
              activated_at: Time.zone.now)
 
